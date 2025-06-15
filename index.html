@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Photobooth Fauzan ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="photobooth-container">
+        <h1 class="title"><i class="fas fa-camera-retro"></i>Photobooth Fauzan</h1>
+        
+
+        <div id="startSection">
+            <div class="status">Klik Tombol Di Bawah Photobooth Keren Loh!</div> 
+            <br> 
+            <div class="controls">
+                <button class="start-btn" onclick="startCamera()">
+                    <i class="fas fa-camera"></i> Mulai Kamera
+                </button>
+            </div>
+        </div>
+
+        <div id="cameraSection" class="hidden">
+            <div class="mode-selector">
+                <button class="mode-btn active" onclick="setMode('single')">
+                    <i class="fas fa-camera"></i> Single
+                </button>
+                <button class="mode-btn" onclick="setMode('strip')">
+                    <i class="fas fa-images"></i> Photo Strip
+                </button>
+                <button class="mode-btn" onclick="setMode('collage')">
+                    <i class="fas fa-th-large"></i> Collage
+                </button>
+            </div>
+
+            <div class="camera-container">
+                <video id="videoElement" autoplay playsinline muted></video>
+                <canvas id="canvas" style="display: none;"></canvas>
+                <div id="frameOverlay" class="frame-overlay"></div>
+                <div id="effectOverlay" class="effect-overlay"></div>
+                <div id="countdown" class="countdown"></div>
+            </div>
+
+            <div class="controls">
+                <div class="control-section">
+                    <div class="section-title">🎨 Filter</div>
+                    <div class="filter-controls">
+                        <button class="filter-btn active" onclick="setFilter('none')">
+                            <i class="fas fa-eye"></i> Normal
+                        </button>
+                        <button class="filter-btn" onclick="setFilter('grayscale')">
+                            <i class="fas fa-adjust"></i> B&W
+                        </button>
+                        <button class="filter-btn" onclick="setFilter('sepia')">
+                            <i class="fas fa-sun"></i> Sepia
+                        </button>
+                        <button class="filter-btn" onclick="setFilter('vintage')">
+                            <i class="fas fa-film"></i> Vintage
+                        </button>
+                        <button class="filter-btn" onclick="setFilter('cool')">
+                            <i class="fas fa-snowflake"></i> Cool
+                        </button>
+                        <button class="filter-btn" onclick="setFilter('warm')">
+                            <i class="fas fa-fire"></i> Warm
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <div class="section-title">🖼️ Frame</div>
+                    <div class="filter-controls">
+                        <button class="frame-btn active" onclick="setFrame('none')">
+                            <i class="fas fa-times"></i> No Frame
+                        </button>
+                        <button class="frame-btn" onclick="setFrame('vintage')">
+                            <i class="fas fa-border-style"></i> Vintage
+                        </button>
+                        <button class="frame-btn" onclick="setFrame('emoji')">
+                            <i class="far fa-grin-stars"></i> Emoji
+                        </button>
+                        <button class="frame-btn" onclick="setFrame('neon')">
+                            <i class="fas fa-bolt"></i> Neon
+                        </button>
+                        <button class="frame-btn" onclick="setFrame('elegant')">
+                            <i class="fas fa-crown"></i> Elegant
+                        </button>
+                        <button class="frame-btn" onclick="setFrame('polaroid')">
+                            <i class="fas fa-camera"></i> Polaroid
+                        </button>
+                    </div>
+                </div>
+
+                <button class="capture-btn" onclick="capturePhoto()">
+                    <i class="fas fa-camera"></i>
+                </button>
+
+                <div class="status" id="status">Siap untuk mengambil foto!</div>
+            </div>
+
+            <div id="progressContainer" class="hidden">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="strip-status" id="stripStatus">Foto 1 dari 4</div>
+            </div>
+
+            <div id="photoResults" class="hidden">
+                <div class="section-title">📸 Hasil Foto</div>
+                <div id="photoContainer"></div>
+                <div class="controls">
+                    <button class="start-btn" onclick="resetPhotobooth()">
+                        <i class="fas fa-redo"></i> Ambil Foto Lagi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="flash" class="flash"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

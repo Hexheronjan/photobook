@@ -643,6 +643,168 @@ body::before {
     }
 }
 
+
+/* Tambahkan CSS ini ke file style.css yang sudah ada */
+
+.photo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.photo-result {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.photo-result:hover {
+    transform: scale(1.02);
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, var(--success), #48cae4);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    margin-top: 15px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 15px 30px rgba(0, 212, 170, 0.3);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+}
+
+.download-btn:hover::before {
+    left: 100%;
+}
+
+.download-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 212, 170, 0.5);
+}
+
+.download-btn:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.collage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.collage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+    background: var(--glass);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.collage-photo {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.collage-photo:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.photo-strip-container {
+    background: linear-gradient(145deg, #1a1a1a, #000);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 20px auto;
+    position: relative;
+    max-width: 300px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.photo-strip {
+    background: #000;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.strip-photo {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 4px solid #333;
+    transition: transform 0.3s ease;
+}
+
+.strip-photo:hover {
+    transform: scale(1.02);
+}
+
+.strip-photo:last-child {
+    border-bottom: none;
+}
+
+/* Responsive adjustments untuk download buttons */
+@media (max-width: 480px) {
+    .download-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    .collage-photo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .photo-strip-container {
+        max-width: 250px;
+        padding: 20px;
+    }
+    
+    .strip-photo {
+        height: 150px;
+    }
+}
+
 @media (max-width: 480px) {
     .photobooth-container {
         padding: 25px 20px;
